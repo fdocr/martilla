@@ -1,31 +1,22 @@
 require 'martilla/version'
 require 'martilla/cli'
 
+require 'martilla/backup'
+
+require 'martilla/database'
+require 'martilla/databases/mysql'
+require 'martilla/databases/postgres'
+
+require 'martilla/notifier'
+require 'martilla/notifiers/email'
+require 'martilla/notifiers/ses'
+require 'martilla/notifiers/slack'
+
+require 'martilla/storage'
+require 'martilla/storages/local'
+require 'martilla/storages/s3'
+require 'martilla/storages/scp'
+
 module Martilla
   class Error < StandardError; end
-
-  def execute_backup(config)
-    puts "EXECUTING BACKUP WITH CONFIG: #{config}"
-    db = Database.new(config['db'])
-    storage = Storage.new(config['storage'])
-    notifiers = config['notifiers'].map { |c| Notifier.new(c) }
-
-    begin
-      # Perform DB dump & storage of backup
-      temp_filepath = db.dump
-      storage.persist(temp_filepath)
-    rescue Exception => e
-      puts "EXCEPTION RAISED: #{e.inspect}"
-      notifiers.each do |notifier|
-        notifier.error(e)
-      end
-    else
-      puts "SUCCESS"
-      notifiers.each do |notifier|
-        notifier.success
-      end
-    end
-
-    File.delete(temp_filepath) if File.exist?(temp_filepath)
-  end
 end

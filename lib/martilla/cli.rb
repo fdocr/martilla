@@ -15,13 +15,14 @@ module Martilla
       rescue Errno::ENOENT
         puts "Couldn't access non-existent file #{file_path}"
       else
-        execute_backup(backup_config)
+        backup = Backup.create(backup_config)
       end
     end
 
     desc "setup FILEPATH", "Generates a sample backup config file at FILEPATH"
-    def setup(filepath = './martilla.yml')
-      puts filepath
+    def setup(filename = 'martilla.yml')
+      file_path = File.join(Dir.pwd, filename)
+      File.write(file_path, Backup.sample_config.to_yaml)
     end
   end
 end

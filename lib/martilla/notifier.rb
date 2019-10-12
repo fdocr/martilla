@@ -2,22 +2,37 @@ require 'forwardable'
 
 module Martilla
   class Notifier
-    extend Forwardable
+    attr_reader :options
 
     def initialize(config)
-      # When a new core target is added to the project include it here
+      @options = config
+      raise Error.new(invalid_options_msg) if @options.nil?
+    end
+
+    def success(data)
+      raise NotImplementedError, 'You must implement the success method'
+    end
+
+    def error(msg, data)
+      raise NotImplementedError, 'You must implement the error method'
+    end
+
+    def invalid_options_msg
+      'Notifier configuration is invalid. Details here: https://github.com/fdoxyz/martilla'
+    end
+
+    # When a new Notifier is supported it needs to go here
+    def self.create(config = {})
       case config['type'].downcase
       when 'email'
-        @notifier = Notifiers::Email.new(config['options'])
+        Email.new(config['options'])
       when 'ses'
-        @notifier = Notifiers::Ses.new(config['options'])
+        Ses.new(config['options'])
       when 'slack'
-        @notifier = Notifiers::Slack.new(config['options'])
+        Slack.new(config['options'])
       else
         raise Error.new("Invalid Notifier type: #{config['type']}")
       end
     end
-
-    def_delegators :@notifier, :success, :error
   end
 end

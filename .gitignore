@@ -9,3 +9,7 @@
 
 # rspec failure tracking
 .rspec_status
+
+martilla.yml
+backup.sql
+backup.sql.gz

@@ -1,5 +1,27 @@
-class Martilla::Storages::Scp < Martilla::Storages::Base
-  def persist(filepath, opts)
+module Martilla
+  class Scp < Storage
+    def persist(tmp_file:, gzip:)
+      `scp -i #{identity_file} #{user}@#{host}:#{output_filename(gzip)}`
+      return nil if $?.success?
+      raise Error.new("SCP storage failed with code #{$?.exitstatus}")
+    end
 
+    def host
+      scp_host = @options['host']
+      raise config_error('host') if scp_host.nil?
+      scp_host
+    end
+
+    def user
+      scp_user = @options['host']
+      raise config_error('host') if scp_user.nil?
+      scp_user
+    end
+
+    def identity_file
+      file = @options['identity_file']
+      raise config_error('identity_file') if file.nil?
+      file
+    end
   end
 end
