@@ -6,6 +6,8 @@ module Martilla
       raise Error.new("SCP storage failed with code #{$?.exitstatus}")
     end
 
+    private
+
     def host
       scp_host = @options['host']
       raise config_error('host') if scp_host.nil?

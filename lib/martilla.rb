@@ -8,7 +8,8 @@ require 'martilla/databases/mysql'
 require 'martilla/databases/postgres'
 
 require 'martilla/notifier'
-require 'martilla/notifiers/email'
+require 'martilla/notifiers/smtp'
+require 'martilla/notifiers/sendmail'
 require 'martilla/notifiers/ses'
 require 'martilla/notifiers/slack'
 

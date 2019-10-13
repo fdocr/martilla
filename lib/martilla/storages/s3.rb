@@ -14,6 +14,8 @@ module Martilla
       raise Error.new('Error uploading backup to bucket')
     end
 
+    private
+
     def s3_resource
       options = {}
       options[:region] = aws_region unless aws_region.nil?

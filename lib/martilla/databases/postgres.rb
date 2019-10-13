@@ -11,6 +11,8 @@ module Martilla
       raise Error.new("Database dump failed with code #{$?.exitstatus}")
     end
 
+    private
+
     def connection_string
       "postgres://#{user}:#{password}@#{host}:#{port}/#{db}"
     end

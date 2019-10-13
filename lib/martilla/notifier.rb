@@ -24,8 +24,10 @@ module Martilla
     # When a new Notifier is supported it needs to go here
     def self.create(config = {})
       case config['type'].downcase
-      when 'email'
-        Email.new(config['options'])
+      when 'sendmail'
+        Sendmail.new(config['options'])
+      when 'smtp'
+        Smtp.new(config['options'])
       when 'ses'
         Ses.new(config['options'])
       when 'slack'

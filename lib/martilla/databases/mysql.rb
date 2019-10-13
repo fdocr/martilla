@@ -11,6 +11,8 @@ module Martilla
       raise Error.new("Database dump failed with code #{$?.exitstatus}")
     end
 
+    private
+
     def connection_arguments
       "-u #{user} -p #{password} -P #{port} #{db}"
     end

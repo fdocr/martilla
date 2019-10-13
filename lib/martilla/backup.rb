@@ -44,8 +44,14 @@ module Martilla
         end
         puts "EXCEPTION RAISED: #{e.inspect}"
       else
-        @notifiers.each do |notifier|
-          notifier.success(metadata)
+        begin
+          @notifiers.each do |notifier|
+            notifier.success(metadata)
+          end
+        rescue Exception => e
+          puts "ERRORRRR: #{e}"
+        else
+          puts "NOTIFIED!"
         end
         puts "SUCCESS"
       end
