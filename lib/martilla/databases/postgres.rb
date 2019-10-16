@@ -7,7 +7,7 @@ module Martilla
         `pg_dump #{connection_string} > #{tmp_file}`
       end
 
-      return nil if $?.success?
+      return if $?.success?
       raise Error.new("Database dump failed with code #{$?.exitstatus}")
     end
 

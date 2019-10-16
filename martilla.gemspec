@@ -28,10 +28,10 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'pony', '~> 1.13'
-  spec.add_dependency 'aws-ses', '~> 0.6.0'
   spec.add_dependency 'thor', '~> 0.20.3'
   spec.add_dependency 'memoist', '~> 0.16.0'
+  spec.add_dependency 'pony', '~> 1.13'
+  spec.add_dependency 'aws-sdk-ses', '~> 1.26'
   spec.add_dependency 'aws-sdk-s3', '~> 1.49'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
@@ -39,4 +39,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.9'
   spec.add_development_dependency 'byebug', '~> 11.0'
   spec.add_development_dependency 'pry-byebug', '~> 3.7'
+  spec.add_development_dependency 'simplecov', '~> 0.17.1'
 end

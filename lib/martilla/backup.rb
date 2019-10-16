@@ -7,6 +7,8 @@ module Martilla
 
     include Utilities
 
+    attr_reader :file_size
+
     def initialize(config)
       @options = config['options']
       @db = Database.create(config['db'])
@@ -32,28 +34,26 @@ module Martilla
 
     def execute
       begin
-        # Perform DB dump & storage of backup with time measurements
+        # Perform DB dump
         @ticks = [Time.now]
-        res = @db.dump(tmp_file: tmp_file, gzip: gzip?)
-        puts "RESSSS: #{res.inspect}"
+        @db.dump(tmp_file: tmp_file, gzip: gzip?)
+
+        # Metadata capture
+        @file_size = File.size(tmp_file).to_f if File.exist?(tmp_file)
         @ticks << Time.now
+
+        # Persist the backup
         @storage.persist(tmp_file: tmp_file, gzip: gzip?)
       rescue Exception => e
         @notifiers.each do |notifier|
           notifier.error(e.message, metadata)
         end
-        puts "EXCEPTION RAISED: #{e.inspect}"
+        puts "An error occurred: #{e.inspect}"
       else
-        begin
-          @notifiers.each do |notifier|
-            notifier.success(metadata)
-          end
-        rescue Exception => e
-          puts "ERRORRRR: #{e}"
-        else
-          puts "NOTIFIED!"
+        @notifiers.each do |notifier|
+          notifier.success(metadata)
         end
-        puts "SUCCESS"
+        puts "Backup created and persisted successfully"
       end
 
       File.delete(tmp_file) if File.exist?(tmp_file)
@@ -64,18 +64,16 @@ module Martilla
       data = []
 
       # Total backup size
-      if File.exist?(tmp_file)
-        compressed_file_size = File.size(tmp_file).to_f / 2**20
-        formatted_file_size = '%.2f' % compressed_file_size
-        data << "Total backup size: #{formatted_file_size} MB"
-      else
+      if @file_size.nil?
         data << "No backup file was created"
+      else
+        data << "Total backup size: #{formatted_file_size}"
       end
 
       # Backup time measurements
       if @ticks.count >= 2
         time_diff = duration_format(@ticks[1] - @ticks[0])
-        data << "Backup dump duration: #{time_diff}"
+        data << "Backup 'dump' duration: #{time_diff}"
       end
 
       # Storage time measurements
@@ -112,7 +110,7 @@ module Martilla
         },
         'notifiers' => [
           {
-            'type' => 'email',
+            'type' => 'smtp',
             'options' => {
               'from' => 'backups@example.com',
               'to' => 'dba@example.com',

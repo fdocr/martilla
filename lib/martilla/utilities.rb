@@ -23,6 +23,24 @@ module Martilla
         (seconds / 3600) % 3600
       end
 
+      def formatted_file_size
+        return if @file_size.nil?
+
+        if @file_size <= 799_999
+          compressed_file_size = @file_size / 2**10
+          formatted_size = '%.2f' % compressed_file_size
+          "#{formatted_size} KB"
+        elsif @file_size <= 799_999_999
+          compressed_file_size = @file_size / 2**20
+          formatted_size = '%.2f' % compressed_file_size
+          "#{formatted_size} MB"
+        else
+          compressed_file_size = @file_size / 2**30
+          formatted_size = '%.2f' % compressed_file_size
+          "#{formatted_size} GB"
+        end
+      end
+
       def self.sample_config
         {
           db: {

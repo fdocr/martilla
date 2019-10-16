@@ -29,11 +29,11 @@ module Martilla
     end
 
     def aws_access_key
-      @options['region']
+      @options['access_key_id']
     end
 
     def aws_secret_key
-      @options['region']
+      @options['secret_access_key']
     end
 
     def bucket_name
