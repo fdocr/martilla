@@ -60,7 +60,8 @@ module Martilla
               access_key_id: 'asdf',
               secret_access_key: '1234',
               region: 'us-east-1',
-              path: 'path/to/backups'
+              path: 'backups_directory',
+              filename: 'database-backup'
             }
           },
           notifiers: [

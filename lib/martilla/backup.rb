@@ -13,7 +13,7 @@ module Martilla
       @options = config['options']
       @db = Database.create(config['db'])
       @storage = Storage.create(config['storage'])
-      @notifiers = config['notifiers'].map { |c| Notifier.create(c) }
+      @notifiers = config['notifiers'].map { |c| Notifier.create(c) }.compact
     end
 
     def self.create(config)
@@ -23,7 +23,8 @@ module Martilla
     end
 
     def gzip?
-      @options['gzip'] || true
+      return true if @options['gzip'].nil?
+      @options['gzip']
     end
 
     def tmp_file

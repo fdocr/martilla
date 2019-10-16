@@ -17,15 +17,24 @@ module Martilla
       'Storage configuration is invalid. Details here: https://github.com/fdoxyz/martilla'
     end
 
+    def suffix?
+      return true if @options['suffix'].nil?
+      @options['suffix']
+    end
+
     def output_filename(gzip)
       filename = @options['filename'] || 'backup.sql'
-      filename = "#{filename}_#{Time.now.strftime("%Y-%m-%dT%H")}" unless suffix?
+      filename = append_datetime_suffix(filename) if suffix?
       filename = "#{filename}.gz" if gzip
       filename
     end
 
-    def suffix?
-      @options['suffix'] || true
+    def append_datetime_suffix(filename)
+      dirname = File.dirname(filename).gsub('./', '')
+      basename = File.basename(filename, '.*')
+      extension = filename.gsub(File.basename("#{dirname}/#{basename}"), '')
+      timestamp = Time.now.strftime("%Y-%m-%dT%H%M%S")
+      "#{dirname}/#{basename}_#{timestamp}#{extension}"
     end
 
     def config_error(config_name)

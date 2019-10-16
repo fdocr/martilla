@@ -40,6 +40,8 @@ module Martilla
         Ses.new(config['options'])
       when 'slack'
         Slack.new(config['options'])
+      when 'none'
+        nil
       else
         raise Error.new("Invalid Notifier type: #{config['type']}")
       end
