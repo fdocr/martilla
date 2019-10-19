@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'pony', '~> 1.13'
   spec.add_dependency 'aws-sdk-ses', '~> 1.26'
   spec.add_dependency 'aws-sdk-s3', '~> 1.49'
+  spec.add_dependency 'slack-notifier', '~> 2.3.2'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'rake', '~> 13.0'

@@ -6,6 +6,7 @@ PATH
       aws-sdk-ses (~> 1.26)
       memoist (~> 0.16.0)
       pony (~> 1.13)
+      slack-notifier (~> 2.3.2)
       thor (~> 0.20.3)
 
 GEM
@@ -68,6 +69,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    slack-notifier (2.3.2)
     thor (0.20.3)
 
 PLATFORMS
