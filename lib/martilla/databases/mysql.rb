@@ -18,23 +18,23 @@ module Martilla
     end
 
     def host
-      @options['host'] || 'local'
+      @options['host'] || ENV['MYSQL_HOST'] || 'localhost'
     end
 
     def port
-      @options['port'] || '3306'
+      @options['port'] || ENV['MYSQL_PORT'] || '3306'
     end
 
     def user
-      @options['user']
+      @options['user'] || ENV['MYSQL_USER']
     end
 
     def password
-      @options['password']
+      @options['password'] || ENV['MYSQL_PASSWORD']
     end
 
     def db
-      @options['db']
+      @options['db'] || ENV['MYSQL_DATABASE']
     end
   end
 end

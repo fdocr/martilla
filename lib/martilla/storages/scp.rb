@@ -15,8 +15,8 @@ module Martilla
     end
 
     def user
-      scp_user = @options['host']
-      raise config_error('host') if scp_user.nil?
+      scp_user = @options['user']
+      raise config_error('user') if scp_user.nil?
       scp_user
     end
 

@@ -89,15 +89,10 @@ module Martilla
 
     def self.sample_config
       {
-        'options' => {
-          'gzip' => false,
-          'tmp_file' => '/tmp/backup'
-        },
         'db' => {
           'type' => 'postgres',
           'options' => {
-            'host' => 'ec2-00-00-100-100.eu-west-1.compute.amazonaws.com',
-            'port' => 5432,
+            'host' => 'localhost',
             'user' => 'username',
             'password' => 'password',
             'db' => 'databasename'
@@ -106,28 +101,12 @@ module Martilla
         'storage' => {
           'type' => 'local',
           'options' => {
-            'filename' => 'backup.sql'
+            'filename' => 'database-backup.sql'
           }
         },
         'notifiers' => [
           {
-            'type' => 'smtp',
-            'options' => {
-              'from' => 'backups@example.com',
-              'to' => 'dba@example.com',
-              'cc' => 'ops@example.com',
-              'address' => 'smtp.yourserver.com',
-              'port' => 25,
-              'user_name' => 'user',
-              'password' => 'password',
-              'authentication' => 'plain'
-            }
-          },
-          {
-            'type' => 'slack',
-            'options' => {
-              'url' => 'https://slack.com/alksmdlakmsla'
-            }
+            'type' => 'none'
           }
         ]
       }

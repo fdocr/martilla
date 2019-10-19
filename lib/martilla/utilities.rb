@@ -40,31 +40,6 @@ module Martilla
           "#{formatted_size} GB"
         end
       end
-
-      def self.sample_config
-        {
-          db: {
-            type: 'postgres',
-            options: {
-              host: 'localhost',
-              user: 'username',
-              password: 'password',
-              db: 'databasename'
-            }
-          },
-          storage: {
-            type: 'local',
-            options: {
-              filename: 'database-backup.sql'
-            }
-          },
-          notifiers: [
-            {
-              type: 'none'
-            }
-          ]
-        }
-      end
     end
   end
 end

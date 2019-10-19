@@ -18,23 +18,23 @@ module Martilla
     end
 
     def host
-      @options['host'] || 'localhost'
+      @options['host'] || ENV['PG_HOST'] || 'localhost'
     end
 
     def port
-      @options['port'] || '5432'
+      @options['port'] || ENV['PG_PORT'] || '5432'
     end
 
     def user
-      @options['user']
+      @options['user'] || ENV['PG_USER']
     end
 
     def password
-      @options['password']
+      @options['password'] || ENV['PG_PASSWORD']
     end
 
     def db
-      @options['db']
+      @options['db'] || ENV['PG_DATABASE']
     end
   end
 end
