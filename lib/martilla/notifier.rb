@@ -21,14 +21,6 @@ module Martilla
       'Notifier configuration is invalid. Details here: https://github.com/fdoxyz/martilla'
     end
 
-    def success_subject
-      @options['success_subject'] || '[SUCCESS] Backup created'
-    end
-
-    def error_subject
-      @options['failure_subject'] || '[FAILURE] Backup failed'
-    end
-
     # When a new Notifier is supported it needs to go here
     def self.create(config = {})
       case config['type'].downcase

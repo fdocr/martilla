@@ -15,7 +15,7 @@ module Martilla
     def error(msg, data)
       Pony.mail(to: to_email,
                 from: from_email,
-                subject: error_subject,
+                subject: failure_subject,
                 via: :smtp,
                 html_body: error_html(msg, data),
                 body: error_txt(msg, data),

@@ -53,5 +53,13 @@ module Martilla
     def from_email
       @options['from'] || 'martilla@no-reply.com'
     end
+
+    def success_subject
+      @options['success_subject'] || '[SUCCESS] Backup created'
+    end
+
+    def failure_subject
+      @options['failure_subject'] || '[FAILURE] Backup failed'
+    end
   end
 end

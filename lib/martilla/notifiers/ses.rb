@@ -52,7 +52,7 @@ module Martilla
             },
             subject: {
               charset: 'UTF-8',
-              data: error_subject
+              data: failure_subject
             }
           },
           source: from_email

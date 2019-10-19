@@ -46,43 +46,21 @@ module Martilla
           db: {
             type: 'postgres',
             options: {
-              host: 'ec2-00-00-100-100.eu-west-1.compute.amazonaws.com',
-              port: 5432,
+              host: 'localhost',
               user: 'username',
               password: 'password',
               db: 'databasename'
             }
           },
           storage: {
-            type: 's3',
+            type: 'local',
             options: {
-              bucket: 'db-backups',
-              access_key_id: 'asdf',
-              secret_access_key: '1234',
-              region: 'us-east-1',
-              path: 'backups_directory',
-              filename: 'database-backup'
+              filename: 'database-backup.sql'
             }
           },
           notifiers: [
             {
-              type: 'email',
-              options: {
-                from: 'backups@example.com',
-                to: 'dba@example.com',
-                cc: 'ops@example.com',
-                address: 'smtp.yourserver.com',
-                port: 25,
-                user_name: 'user',
-                password: 'password',
-                authentication: 'plain'
-              }
-            },
-            {
-              type: 'slack',
-              options: {
-                url: 'https://slack.com/alksmdlakmsla'
-              }
+              type: 'none'
             }
           ]
         }
