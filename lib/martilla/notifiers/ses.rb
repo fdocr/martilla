@@ -1,5 +1,4 @@
 require 'aws-sdk-ses'
-require 'byebug'
 
 module Martilla
   class Ses < EmailNotifier

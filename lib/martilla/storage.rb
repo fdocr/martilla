@@ -30,9 +30,14 @@ module Martilla
     end
 
     def append_datetime_suffix(filename)
-      dirname = File.dirname(filename).gsub('./', '')
+      dirname = File.dirname(filename)
       basename = File.basename(filename, '.*')
-      extension = filename.gsub(File.basename("#{dirname}/#{basename}"), '')
+
+      # 'dir_with_name' is the original filename WITHOUT the extension
+      dir_with_name = "#{dirname}/#{basename}"
+      dir_with_name = basename if dirname == '.'
+
+      extension = filename.gsub(dir_with_name, '')
       timestamp = Time.now.strftime("%Y-%m-%dT%H%M%S")
       "#{dirname}/#{basename}_#{timestamp}#{extension}"
     end

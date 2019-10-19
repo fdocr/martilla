@@ -3,11 +3,8 @@ require 'aws-sdk-s3'
 module Martilla
   class S3 < Storage
     def persist(tmp_file:, gzip:)
-      # Get just the file name
-      name = File.basename(tmp_file)
-
-      # Create the object to upload
-      obj = s3_resource.bucket(bucket_name).object(name)
+      path = output_filename(gzip)
+      obj = s3_resource.bucket(bucket_name).object(path)
 
       # Upload it
       return nil if obj.upload_file(tmp_file)
