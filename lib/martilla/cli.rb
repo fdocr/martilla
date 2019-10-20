@@ -1,4 +1,3 @@
-require 'byebug'
 require 'yaml'
 require 'thor'
 
@@ -24,6 +23,11 @@ module Martilla
     def setup(filename = 'martilla.yml')
       file_path = File.join(Dir.pwd, filename)
       File.write(file_path, Backup.sample_config.to_yaml)
+    end
+
+    desc "version", "Prints out the current version"
+    def version
+      puts VERSION
     end
   end
 end
