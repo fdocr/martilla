@@ -20,13 +20,13 @@ gem 'martilla'
 
 Martilla uses a YAML configuration file that specifies the backup to be performed. The gem works by making three main concepts work together, they're listed out with details that should generally be specified in the config file:
 
- - Database
+ - **Database**
    - What database are we going to backup
    - How can we connect to the database
- - Storage
+ - **Storage**
    - Where is this backup going to be stored
    - Credentials needed to persist the backup
- - Notifiers
+ - **Notifiers**
    - How will you get notified of the backup result
    - Can be a list of multiple ways to get notified
 
@@ -53,7 +53,7 @@ From here on you pick the building blocks that work for your specific case:
 
 ### Databases
 
-Currently available DB types to choose from are 'postgres' & 'mysql'. They both have the same available options:
+Currently available DB types to choose from are **postgres** & **mysql**. They both have the same available options:
  - `host`
    - defaults to localhost
    - can be set in ENV variable `PG_HOST` or `MYSQL_HOST`
@@ -73,10 +73,10 @@ Currently available DB types to choose from are 'postgres' & 'mysql'. They both 
 ### Storages
 
 The available Storages types are 'local', 'S3' & 'SCP'. They each have different available options:
- - options for type: 'local'
+ - options for type: **local**
    - `filename`
      - The location to where the backup will be stored
- - options for type: 's3'
+ - options for type: **s3**
    - `filename`
      - The location to where the backup will be stored within the S3 bucket
    - `bucket`
@@ -85,7 +85,7 @@ The available Storages types are 'local', 'S3' & 'SCP'. They each have different
      - can be specified with the usual ENV variables or IAM roles
    - `secret_access_key`
      - can be specified with the usual ENV variables or IAM roles
- - options for type: 'scp'
+ - options for type: **scp**
    - `filename`
      - The location to where the backup will be stored within remote server
    - `host`
@@ -97,21 +97,31 @@ All storage types also accept 'suffix' as a boolean that enables or disables a t
 ### Notifiers
 
 The available Notifiers are 'ses', 'sendmail' & 'smtp'. They each have different available options:
-- options for type: 'ses' (email notifier)
+- options for type: **ses** (email notifier)
   - `aws_region`
   - `access_key_id`
     - can be specified with the usual ENV variables or IAM role
   - `secret_access_key`
     - can be specified with the usual ENV variables or IAM roles
-- options for type: 'sendmail' (email notifier)
+- options for type: **sendmail** (email notifier)
   - no custom options
-- options for type: 'smtp' (email notifier)
+- options for type: **smtp** (email notifier)
   - `address`
   - `domain`
   - `user_name`
   - `password`
+- options for type: **slack**
+  - `slack_webhook_url`
+    - required
+    - more info [here](https://api.slack.com/messaging/webhooks)
+  - `slack_channel`
+    - defaults to `#general`
+    - the channel to post the backup notifications
+  - `slack_username`
+    - defaults to `Martilla`
+    - the username which backup notifications will be posted with
 
-All of the previous email notifiers also have the following options they all use:
+All of the previous **email notifiers** also have the following options that can be customized:
  - `to`
    - a list of comma separated emails to be notified
  - `from`
