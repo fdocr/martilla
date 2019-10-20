@@ -30,11 +30,11 @@ module Martilla
     end
 
     def slack_channel
-      @options['slack_channel'] or "#general"
+      @options['slack_channel'] || "#general"
     end
 
     def slack_username
-      @options['slack_username'] or "Martilla"
+      @options['slack_username'] || "Martilla"
     end
 
     def success_txt(data)
