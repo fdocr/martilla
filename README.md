@@ -2,7 +2,7 @@
 
 Martilla is a tool to automate your backups. With simple but flexible configuration options you can have a database backup configured to run (using cron jobs or similar). Receive a notification whenever a backup fails, choose multiple ways of getting notified (i.e. email + slack).
 
-The name Martilla comes from a local name for the [Kinkajou](https://en.wikipedia.org/wiki/Kinkajou). This nocturnal animal is goes fairly unnoticed, just like we hope database backups should remain.
+The name Martilla comes from a local name for the [Kinkajou](https://en.wikipedia.org/wiki/Kinkajou). This nocturnal animal goes fairly unnoticed, just like we hope database backups should remain.
 
 ## Installation
 
