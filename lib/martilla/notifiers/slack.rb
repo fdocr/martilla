@@ -21,7 +21,7 @@ module Martilla
     end
 
     def notifier
-      ::Slack::Notifier.new(slack_webhook_url, channel: slack_channel, username: slack_username)
+      ::Slack::Notifier.new(slack_webhook_url, channel: slack_channel, on_failure: true, on_success: true, username: slack_username)
     end
 
     def slack_webhook_url
