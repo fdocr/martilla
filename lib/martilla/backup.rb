@@ -1,3 +1,4 @@
+require 'byebug'
 require 'memoist'
 require 'martilla/utilities'
 
@@ -10,7 +11,7 @@ module Martilla
     attr_reader :file_size
 
     def initialize(config)
-      @options = config['options']
+      @options = config['options'] || {}
       @db = Database.create(config['db'])
       @storage = Storage.create(config['storage'])
       @notifiers = config['notifiers'].map { |c| Notifier.create(c) }.compact
@@ -28,7 +29,9 @@ module Martilla
     end
 
     def tmp_file
+      # byebug
       filename = @options.dig('tmp_file') || '/tmp/backup'
+      byebug
       return "#{filename}.gz" if gzip?
       filename
     end
