@@ -14,7 +14,7 @@ module Martilla
     private
 
     def connection_arguments
-      "-u #{user} -p=#{password} -P #{port} #{db}"
+      "-u #{user} --password=#{password} -P #{port} #{db}"
     end
 
     def host
