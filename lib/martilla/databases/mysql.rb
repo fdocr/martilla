@@ -2,9 +2,9 @@ module Martilla
   class Mysql < Database
     def dump(tmp_file:, gzip:)
       if gzip
-        `set -o pipefail && mysqldump #{connection_arguments} | gzip -c > #{tmp_file}`
+        bash("set -o pipefail && mysqldump #{connection_arguments} | gzip -c > #{tmp_file}")
       else
-        `mysqldump #{connection_arguments} > #{tmp_file}`
+        bash("mysqldump #{connection_arguments} > #{tmp_file}")
       end
 
       return if $?.success?

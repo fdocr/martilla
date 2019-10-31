@@ -2,9 +2,9 @@ module Martilla
   class Postgres < Database
     def dump(tmp_file:, gzip:)
       if gzip
-        `set -o pipefail && pg_dump #{connection_string} | gzip -c > #{tmp_file}`
+        bash("set -o pipefail && pg_dump #{connection_string} | gzip -c > #{tmp_file}")
       else
-        `pg_dump #{connection_string} > #{tmp_file}`
+        bash("pg_dump #{connection_string} > #{tmp_file}")
       end
 
       return if $?.success?

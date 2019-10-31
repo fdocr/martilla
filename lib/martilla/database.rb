@@ -1,7 +1,7 @@
 require 'forwardable'
 
 module Martilla
-  class Database
+  class Database < Component
     attr_reader :options
 
     def initialize(config)

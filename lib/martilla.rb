@@ -2,6 +2,7 @@ require 'martilla/version'
 require 'martilla/cli'
 
 require 'martilla/backup'
+require 'martilla/component'
 
 require 'martilla/database'
 require 'martilla/databases/mysql'

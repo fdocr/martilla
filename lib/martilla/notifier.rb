@@ -1,7 +1,7 @@
 require 'forwardable'
 
 module Martilla
-  class Notifier
+  class Notifier < Component
     attr_reader :options
 
     def initialize(config)

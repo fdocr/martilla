@@ -1,7 +1,7 @@
 require 'forwardable'
 
 module Martilla
-  class Storage
+  class Storage < Component
     attr_reader :options
 
     def initialize(config)
