@@ -14,7 +14,7 @@ module Martilla
     private
 
     def connection_arguments
-      "-u #{user} -p #{password} -P #{port} #{db}"
+      "#{db_name} -u #{user} -p #{password} -P #{port} #{db}"
     end
 
     def host
@@ -31,6 +31,10 @@ module Martilla
 
     def password
       @options['password'] || ENV['MYSQL_PASSWORD']
+    end
+
+    def db_name
+      @options['db_name'] || ENV['MYSQL_DB_NAME'] || '--all-databases'
     end
 
     def db
