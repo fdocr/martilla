@@ -1,4 +1,3 @@
-require 'byebug'
 require 'memoist'
 require 'martilla/utilities'
 
@@ -29,9 +28,7 @@ module Martilla
     end
 
     def tmp_file
-      # byebug
       filename = @options.dig('tmp_file') || '/tmp/backup'
-      byebug
       return "#{filename}.gz" if gzip?
       filename
     end
