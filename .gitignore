@@ -14,3 +14,6 @@
 martilla.yml
 backup.sql
 backup.sql.gz
+
+test-database-dump.sql
+test-database-dump.sql.gz
