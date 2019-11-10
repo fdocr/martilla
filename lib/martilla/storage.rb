@@ -13,6 +13,10 @@ module Martilla
       raise NotImplementedError, 'You must implement the persist method'
     end
 
+    def enforce_retention!
+      raise NotImplementedError, 'You must implement the enforce_retention! method'
+    end
+
     def invalid_options_msg
       'Storage configuration is invalid. Details here: https://github.com/fdoxyz/martilla'
     end
@@ -40,6 +44,14 @@ module Martilla
       extension = filename.gsub(dir_with_name, '')
       timestamp = Time.now.strftime("%Y-%m-%dT%H%M%S")
       "#{dirname}/#{basename}_#{timestamp}#{extension}"
+    end
+
+    def retention_limit
+      @options['retention'].to_i
+    end
+
+    def timestamp_regex
+      /\d{4}-\d{2}-\d{2}T\d{6}/
     end
 
     def config_error(config_name)
