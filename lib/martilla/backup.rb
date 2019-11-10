@@ -45,6 +45,7 @@ module Martilla
 
         # Persist the backup
         @storage.persist(tmp_file: tmp_file, gzip: gzip?)
+        @storage.enfore_retention!(gzip: gzip?)
       rescue Exception => e
         @notifiers.each do |notifier|
           notifier.error(e.message, metadata)
@@ -101,7 +102,8 @@ module Martilla
         'storage' => {
           'type' => 'local',
           'options' => {
-            'filename' => 'database-backup.sql'
+            'filename' => 'database-backup.sql',
+            'retention' => 0
           }
         },
         'notifiers' => [

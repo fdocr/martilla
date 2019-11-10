@@ -25,8 +25,9 @@ module Martilla
     end
 
     def slack_webhook_url
-      raise config_error('slack_webhook_url') if @options['slack_webhook_url'].nil?
-      @options['slack_webhook_url']
+      webhook_url = @options['slack_webhook_url'] || ENV['SLACK_WEBHOOK_URL']
+      raise config_error('slack_webhook_url') if webhook_url.nil?
+      webhook_url
     end
 
     def slack_channel

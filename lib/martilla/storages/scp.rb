@@ -6,6 +6,10 @@ module Martilla
       raise Error.new("SCP storage failed with code #{$?.exitstatus}")
     end
 
+    def enfore_retention!(gzip:)
+      puts 'WARNING: Retention is not implemented for SCP storage. More details: https://github.com/fdoxyz/martilla/issues/12'
+    end
+
     private
 
     def host
