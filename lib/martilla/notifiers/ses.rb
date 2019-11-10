@@ -35,9 +35,7 @@ module Martilla
       begin
         ses_client.send_email(
           destination: {
-            to_addresses: [
-              to_email.split(',')
-            ]
+            to_addresses: to_email.split(',')
           },
           message: {
             body: {

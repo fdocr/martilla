@@ -1,5 +1,6 @@
 require 'memoist'
 require 'martilla/utilities'
+# require 'byebug'
 
 module Martilla
   class Backup
@@ -48,12 +49,14 @@ module Martilla
         @storage.enfore_retention!(gzip: gzip?)
       rescue Exception => e
         @notifiers.each do |notifier|
-          notifier.error(e.message, metadata)
+          # byebug
+          notifier.error(e.message, metadata) if notifier.send_failure?
         end
         puts "An error occurred: #{e.inspect}"
       else
         @notifiers.each do |notifier|
-          notifier.success(metadata)
+          # byebug
+          notifier.success(metadata) if notifier.send_success?
         end
         puts "Backup created and persisted successfully"
       end
