@@ -72,10 +72,12 @@ Currently available DB types to choose from are **postgres** & **mysql**. They b
 
 ### Storages
 
-The available Storages types are 'local', 'S3' & 'SCP'. They each have different available options:
+The available Storages types are **local**, **S3**& **SCP**. They each have different available options:
  - options for type: **local**
    - `filename`
      - The location to where the backup will be stored
+   - `retention`
+     - An integer that defines the max number of backups stored at the defined location
  - options for type: **s3**
    - `filename`
      - The location to where the backup will be stored within the S3 bucket
@@ -85,18 +87,22 @@ The available Storages types are 'local', 'S3' & 'SCP'. They each have different
      - can be specified with the usual ENV variables or IAM roles
    - `secret_access_key`
      - can be specified with the usual ENV variables or IAM roles
+   - `retention`
+     - An integer that defines the max number of backups stored at the defined location
  - options for type: **scp**
    - `filename`
      - The location to where the backup will be stored within remote server
    - `host`
    - `user`
    - `identity_file`
+   - `retention`
+     - Not implemented for this storage ([see #12](https://github.com/fdoxyz/martilla/issues/12))
 
 All storage types also accept 'suffix' as a boolean that enables or disables a timestamp to be added as a suffix to the backup 'filename', it defaults as `true`.
 
 ### Notifiers
 
-The available Notifiers are 'ses', 'sendmail' & 'smtp'. They each have different available options:
+The available Notifiers are **ses**, **sendmail** & **smtp**. They each have different available options:
 - options for type: **ses** (email notifier)
   - `aws_region`
   - `access_key_id`
