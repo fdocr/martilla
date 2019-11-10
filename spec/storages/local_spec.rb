@@ -1,3 +1,5 @@
+require 'fileutils'
+
 RSpec.describe Martilla::Storage do
   let(:local_config) do
     config = Martilla::Backup.sample_config['storage']['options']
@@ -8,6 +10,7 @@ RSpec.describe Martilla::Storage do
   describe 'Local#backup_file_list' do
     context 'gzip: false' do
       before(:each) do
+        FileUtils.mkdir_p('backups')
         Dir['./backups/*'].each { |f| File.delete(f) }
         # Generates 3 sample backup files
         3.times do |i|
@@ -36,6 +39,7 @@ RSpec.describe Martilla::Storage do
 
     context 'gzip: true' do
       before(:each) do
+        FileUtils.mkdir_p('backups')
         Dir['./backups/*'].each { |f| File.delete(f) }
         # Generates 3 sample backup files
         3.times do |i|
