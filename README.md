@@ -4,6 +4,19 @@ Martilla is a tool to automate your backups. With simple but flexible configurat
 
 The name Martilla comes from a local name for the [Kinkajou](https://en.wikipedia.org/wiki/Kinkajou). This nocturnal animal goes fairly unnoticed, just like we hope database backups should remain.
 
+## Table of Contents
+
+1. [Installation](https://github.com/fdoxyz/martilla#installation)
+2. [Usage](https://github.com/fdoxyz/martilla#usage)
+   * [Databases](https://github.com/fdoxyz/martilla#databases)
+   * [Storages](https://github.com/fdoxyz/martilla#storages)
+   * [Notifiers](https://github.com/fdoxyz/martilla#notifiers)
+   * [Perform a backup](https://github.com/fdoxyz/martilla#perform-a-backup)
+3. [Contributing](https://github.com/fdoxyz/martilla#installation)
+4. [Development](https://github.com/fdoxyz/martilla#development)
+5. [License](https://github.com/fdoxyz/martilla#license)
+6. [Code of Conduct](https://github.com/fdoxyz/martilla#code-of-conduct)
+
 ## Installation
 
 To use as a CLI tool
@@ -72,7 +85,7 @@ Currently available DB types to choose from are **postgres** & **mysql**. They b
 
 ### Storages
 
-The available Storages types are **local**, **S3**& **SCP**. They each have different available options:
+The available Storages types are **local**, **S3** & **SCP**. They each have different available options:
  - options for type: **local**
    - `filename`
      - The location to where the backup will be stored
@@ -154,14 +167,14 @@ As simple as running the `backup` command on the martilla CLI and passing as arg
 Help the help command help you
 
     $ martilla help
+    
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/fdoxyz/martilla. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/fdoxyz/martilla. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
