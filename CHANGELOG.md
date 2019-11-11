@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 0.3.0
-2019-10-20
+2019-11-10
 
 - Lots of bug fixes (by trial & error released as versions 0.2.X)
 - `send_success` & `send_failure` now valid options for Notifiers ([PR](https://github.com/fdoxyz/martilla/pull/13))
