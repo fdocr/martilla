@@ -12,7 +12,7 @@ The name Martilla comes from a local name for the [Kinkajou](https://en.wikipedi
    * [Storages](https://github.com/fdoxyz/martilla#storages)
    * [Notifiers](https://github.com/fdoxyz/martilla#notifiers)
    * [Perform a backup](https://github.com/fdoxyz/martilla#perform-a-backup)
-3. [Contributing](https://github.com/fdoxyz/martilla#installation)
+3. [Contributing](https://github.com/fdoxyz/martilla#contributing)
 4. [Development](https://github.com/fdoxyz/martilla#development)
 5. [License](https://github.com/fdoxyz/martilla#license)
 6. [Code of Conduct](https://github.com/fdoxyz/martilla#code-of-conduct)
