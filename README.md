@@ -103,39 +103,45 @@ All storage types also accept 'suffix' as a boolean that enables or disables a t
 ### Notifiers
 
 The available Notifiers are **ses**, **sendmail** & **smtp**. They each have different available options:
-- options for type: **ses** (email notifier)
-  - `aws_region`
-  - `access_key_id`
-    - can be specified with the usual ENV variables or IAM role
-  - `secret_access_key`
-    - can be specified with the usual ENV variables or IAM roles
-- options for type: **sendmail** (email notifier)
-  - no custom options
-- options for type: **smtp** (email notifier)
-  - `address`
-  - `domain`
-  - `user_name`
-  - `password`
-- options for type: **slack**
-  - `slack_webhook_url`
-    - required
-    - more info [here](https://api.slack.com/messaging/webhooks)
-  - `slack_channel`
-    - defaults to `#general`
-    - the channel to post the backup notifications
-  - `slack_username`
-    - defaults to `Martilla`
-    - the username which backup notifications will be posted with
+  - options for type: **ses** (email notifier)
+    - `aws_region`
+    - `access_key_id`
+      - can be specified with the usual ENV variables or IAM role
+    - `secret_access_key`
+      - can be specified with the usual ENV variables or IAM roles
+  - options for type: **sendmail** (email notifier)
+    - no custom options
+  - options for type: **smtp** (email notifier)
+    - `address`
+    - `domain`
+    - `user_name`
+    - `password`
+  - options for type: **slack**
+    - `slack_webhook_url`
+      - required
+      - more info [here](https://api.slack.com/messaging/webhooks)
+    - `slack_channel`
+      - defaults to `#general`
+      - the channel to post the backup notifications
+    - `slack_username`
+      - defaults to `Martilla`
+      - the username which backup notifications will be posted with
 
 All of the previous **email notifiers** also have the following options that can be customized:
- - `to`
-   - a list of comma separated emails to be notified
- - `from`
-   - defaults to 'martilla@no-reply.com'
- - `success_subject`
-   - the subject of the success email
- - `failure_subject`
-   - the subject of the failure email
+  - `to`
+    - a list of comma separated emails to be notified
+  - `from`
+    - defaults to 'martilla@no-reply.com'
+  - `success_subject`
+    - the subject of the success email
+  - `failure_subject`
+    - the subject of the failure email
+
+Also **ALL** notifiers have the following two options
+  - `send_success`
+    - `Boolean` value that will disable notifications on success when set to false. Defaults to `true`
+  - `send_failure`
+    - `Boolean` value that will disable notifications on failure when set to false. Defaults to `true`
 
 It's **HIGHLY RECOMMENDED** to test and make sure emails are being delivered correctly to each target inbox. Emails with standard messages like these automated backup notifications tend to be easily marked as spam.
 

@@ -1,5 +1,3 @@
-require 'forwardable'
-
 module Martilla
   class Notifier < Component
     attr_reader :options
@@ -19,6 +17,18 @@ module Martilla
 
     def invalid_options_msg
       'Notifier configuration is invalid. Details here: https://github.com/fdoxyz/martilla'
+    end
+
+    def send_success?
+      value = @options['send_success']
+      return true if value.nil?
+      value
+    end
+
+    def send_failure?
+      value = @options['send_failure']
+      return true if value.nil?
+      value
     end
 
     # When a new Notifier is supported it needs to go here
