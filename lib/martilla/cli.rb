@@ -1,3 +1,4 @@
+require 'pathname'
 require 'yaml'
 require 'thor'
 
@@ -5,7 +6,8 @@ module Martilla
   class CLI < Thor
     desc "backup FILEPATH", "Generates a backup based on a config file located at FILEPATH"
     def backup(filepath)
-      file_path = File.join(Dir.pwd, filepath)
+      file_path = Pathname.new(filepath)
+      file_path = File.join(Dir.pwd, file_path) if file_path.relative?
       begin
         backup_config = YAML.load_file(file_path)
       rescue Psych::SyntaxError

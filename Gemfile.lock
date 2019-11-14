@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    martilla (0.3.0)
+    martilla (0.3.1)
       aws-sdk-s3 (~> 1.49)
       aws-sdk-ses (~> 1.26)
       memoist (~> 0.16.0)
