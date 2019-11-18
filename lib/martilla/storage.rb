@@ -26,8 +26,12 @@ module Martilla
       @options['suffix']
     end
 
+    def options_filename
+      @options['filename'] || 'backup.sql'
+    end
+
     def output_filename(gzip)
-      filename = @options['filename'] || 'backup.sql'
+      filename = options_filename
       filename = append_datetime_suffix(filename) if suffix?
       filename = "#{filename}.gz" if gzip
       filename
