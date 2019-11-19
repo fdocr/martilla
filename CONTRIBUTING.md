@@ -6,7 +6,7 @@ This project is intended to be a safe, welcoming space for collaboration, and co
 
 ### Where do I go from here?
 
-If you've noticed a bug or have a question [search the issue tracker](https://github.com/activeadmin/activeadmin/issues?q=) to see if someone else has already created a ticket. If not, go ahead and create a one[new issue](https://github.com/fdoxyz/martilla/issues/new/choose)!
+If you've noticed a bug or have a question [search the issue tracker](https://github.com/fdoxyz/martilla/issues?q=) to see if someone else has already created a ticket. If not, go ahead and create a one[new issue](https://github.com/fdoxyz/martilla/issues/new/choose)!
 
 ### Fork & create a branch
 
