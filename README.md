@@ -13,7 +13,6 @@ The name Martilla comes from a local name for the [Kinkajou](https://en.wikipedi
    * [Notifiers](https://github.com/fdoxyz/martilla#notifiers)
    * [Perform a backup](https://github.com/fdoxyz/martilla#perform-a-backup)
 3. [Contributing](https://github.com/fdoxyz/martilla#contributing)
-4. [Development](https://github.com/fdoxyz/martilla#development)
 5. [License](https://github.com/fdoxyz/martilla#license)
 6. [Code of Conduct](https://github.com/fdoxyz/martilla#code-of-conduct)
 
@@ -170,14 +169,10 @@ As simple as running the `backup` command on the martilla CLI and passing as arg
 Help the help command help you
 
     $ martilla help
-    
+
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/fdoxyz/martilla. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Check out our [contributing guide](https://github.com/fdoxyz/martilla/blob/master/CONTRIBUTING.md)
 
 ## License
 
