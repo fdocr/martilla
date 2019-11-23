@@ -2,16 +2,16 @@ module Martilla
   class Backup
     module Utilities
       def duration_format(seconds)
-        case seconds
+        case seconds.to_i
         when 0..59
           # 22s
-          "#{seconds}s"
+          "#{seconds.to_i}s"
         when 60..3599
           # 18m 19s
-          "#{s_to_m(seconds)}m #{seconds % 60}s"
+          "#{s_to_m(seconds).to_i}m #{(seconds % 60).to_i}s"
         else
           # 7h 9m 51s
-          "#{s_to_h(seconds)}h #{s_to_m(seconds)}m #{seconds % 60}s"
+          "#{s_to_h(seconds).to_i}h #{s_to_m(seconds).to_i}m #{(seconds % 60).to_i}s"
         end
       end
 
