@@ -20,8 +20,8 @@ RSpec.describe Martilla::Postgres do
     end
 
     it 'using config params' do
-      mysql = Martilla::Postgres.new(postgres_config)
-      args = mysql.send(:connection_string)
+      pg = Martilla::Postgres.new(postgres_config)
+      args = pg.send(:connection_string)
       expect(args).to eq('postgres://travis:pastrana@8.8.8.8:4444/test')
     end
 
@@ -32,8 +32,8 @@ RSpec.describe Martilla::Postgres do
       ENV['PG_PASSWORD'] = 'hawk'
       ENV['PG_DATABASE'] = 'sample'
 
-      mysql = Martilla::Postgres.new({})
-      args = mysql.send(:connection_string)
+      pg = Martilla::Postgres.new({})
+      args = pg.send(:connection_string)
       expect(args).to eq('postgres://tony:hawk@9.9.9.9:5555/sample')
     end
 
@@ -42,9 +42,16 @@ RSpec.describe Martilla::Postgres do
       ENV['PG_PASSWORD'] = 'hawk'
       ENV['PG_DATABASE'] = 'example'
 
-      mysql = Martilla::Postgres.new({})
-      args = mysql.send(:connection_string)
+      pg = Martilla::Postgres.new({})
+      args = pg.send(:connection_string)
       expect(args).to eq('postgres://tony:hawk@localhost:5432/example')
     end
   end
+
+  it 'using config paramters loaded from YAML file' do
+      config = YAML.load_file('spec/fixtures/postgres_special_characters.yml')
+      pg = Martilla::Database.create(config['db'])
+      args = pg.send(:connection_string)
+      expect(args).to eq('postgres://test:te&s%t_passw(^)rd@localhost:5432/sample-db')
+    end
 end
