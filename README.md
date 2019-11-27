@@ -101,9 +101,7 @@ The available Storages types are **local**, **S3** & **SCP**. They each have dif
      - can be specified with the usual ENV variables or IAM roles
    - `retention`
      - An integer that defines the max number of backups stored at the defined location
-     - **IMPORTANT NOTE:** Releases `v0.3.0` & `v0.3.1` added a bug where the s3 storage option **will possibly delete other files when enforcing retention**. Ways to avoid this problem:
-       - Don't use retention configuration for **s3** storage and wait until a fix is released soon. More details and the status of the issue [here](https://github.com/fdoxyz/martilla/issues/18)
-       - Use a subdirectory within your bucket exclusively for the backups by using the `filename` option to something like `/path/to/backups/backup_name.sql`
+     - **IMPORTANT NOTE:** Releases in `v0.3.x` added a bug where the s3 storage option **might delete other files when enforcing retention**. Make sure you're using `v0.4.x` or newer if you want to enforce a retention limit. More details [here](https://github.com/fdoxyz/martilla/issues/18)
  - options for type: **scp**
    - `filename`
      - The location to where the backup will be stored within remote server
