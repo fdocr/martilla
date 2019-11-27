@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+
+## 0.4.0
+2019-11-27
+- Fixes a couple of important bugs for S3 storage component ([PR](https://github.com/fdoxyz/martilla/pull/19))
+  - Retention enforcement deletes other files in bucket
+  - Root path in bucket wasn't working as a valid location to store backups
+- Fixes a metadata formatting issue ([PR](https://github.com/fdoxyz/martilla/pull/22))
+
 ## 0.3.1
 2019-11-14
 
