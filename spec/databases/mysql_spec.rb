@@ -45,5 +45,12 @@ RSpec.describe Martilla::Mysql do
       ENV['MYSQL_USER'] = nil
       ENV['MYSQL_PASSWORD'] = nil
     end
+
+    it 'using config paramters loaded from YAML file' do
+      config = YAML.load_file('spec/fixtures/mysql_special_characters.yml')
+      mysql = Martilla::Database.create(config['db'])
+      args = mysql.send(:connection_arguments)
+      expect(args).to eq('-u test --password=te&s%t_passw(^)rd --host=localhost -P 3306 --all-databases')
+    end
   end
 end

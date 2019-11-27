@@ -1,0 +1,12 @@
+---
+db:
+  type: mysql
+  options:
+    user: test
+    password: te&s%t_passw(^)rd
+storage:
+  type: local
+  options:
+    filename: database-backup.sql
+notifiers:
+- type: none

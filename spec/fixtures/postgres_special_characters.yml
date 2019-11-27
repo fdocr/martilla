@@ -1,0 +1,13 @@
+---
+db:
+  type: postgres
+  options:
+    user: test
+    password: te&s%t_passw(^)rd
+    db: sample-db
+storage:
+  type: local
+  options:
+    filename: database-backup.sql
+notifiers:
+- type: none
